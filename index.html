@@ -3,119 +3,1179 @@
 
 <html>
 <head>
-  <script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
-  <script src="https://jsuites.net/v4/jsuites.js"></script>
-  <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
-  <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<style>
+
+
+
+*,
+*::before,
+*::after { 
+  box-sizing: border-box;
+}
+
+html {scroll-behavior: smooth;}
+
+body {
+  background-color: #bacec2 !important;
+  /* margin:0; */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+
+}
+
+table {
+  border: 0px #a39485 solid;
+  font-size: 1.2em;
+  width: 50%;
+  margin-left: 25%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  border-color: #bacec2;
+  overflow: hidden;
+}
+
+th {
+  text-align: center;
+}
+  
+thead {
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  background: rgb(89, 82, 54);
+}
+  
+ td, th {
+  padding: 0.5em .25em;
+  vertical-align: middle;
+  text-align: center;
+  width:10%;
+}
+  
+ td {
+  border: 1px solid rgba(0,0,0,.1);
+  background: #fff;
+}
+
+@media all and (max-width: 700px) {
+
+th {font-size: 0.92em;
+width:20% !important;
+}
+
+table {
+font-size: 1em;
+width: 100%;
+margin:0;
+}
+
+
+}
+
+button{   
+  all: unset;
+  font-family: 'Montserrat', sans-serif;}
+
+/*pour que les liens restent de la même couleur après un clic et ne soient pas soulignés*/
+a, a:visited, a:hover, a:active {
+    color: inherit;
+    text-decoration: none;
+  }
+
+
+.container {
+  
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  -webkit-display: box;
+  -moz-display: box;
+  -ms-display: flexbox;
+  -webkit-display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  z-index: 99999;
+}
+
+
+
+.cards {
+  display: flex;
+  padding: 0.5rem;
+  height: 150px;
+  margin:5px;
+}
+
+
+  .card-item {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(254, 246, 219);
+    width: 270px;
+    height: 150px;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+  }
+
+.card-item:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      -webkit-transform: scale(1.05);}
+
+.card-image:hover {
+ opacity: 1;
+      }
+  
+  .card-info {
+    display: inline-flex;
+    width: 100%;
+    padding: 1rem;
+    padding-bottom: 0px;
+    line-height: 1.5em;
+  
+  }
+
+  .card-intro{
+    color:rgb(121, 129, 84);
+    padding: 1rem;
+    padding-top:5px;
+    margin:0;
+    font-size: 1.1rem;
+    text-align: center;
+
+  
+    
+  }
+  .card-title {
+    text-align: center;
+    line-height: 100px;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    font-size: 1rem;
+    margin-right:5px;
+    color: rgb(89, 82, 54);
+    background-color: rgb(233, 212, 141);
+
+  }
+
+
+  .card-year {
+    position: absolute;
+    text-align: center;
+    height: 20px; 
+    line-height: 20px;
+    width: 80px;
+    margin-left: 146px;
+    margin-top: 16px;
+    border-radius: 10px;
+    font-size: 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(209, 147, 111);
+
+  }
+
+
+
+.drawing-grid.view.pages-grid {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding: 0px !important;
+    width: 100% !important;
+    background: #bacec2 !important;
+
+}
+
+.main{
+  top:0 !important;
+  padding:0 !important;
+}
+
+@media screen and (min-width: 1000px)
+{
+  .categorie{transform: scale(1.1);}
+}
+
+@media screen and (max-width: 999px)
+{
+  .categorie{transform: scale(0.9);}
+}
+
+
+[role="progressbar"] {
+  --percentage: var(--value);
+  inherits: true;
+  initial-value: 0;
+  --primary: rgb(209, 147, 111);
+  --secondary: white;
+  --size: 65px;
+  height:var(--size);
+  width: var(--size);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+[role="progressbar"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(var(--primary) calc(var(--percentage) * 1%), var(--secondary) 0);
+  mask: radial-gradient(white 35%, transparent 0);
+  mask-mode: alpha;
+  -webkit-mask: radial-gradient(#0000 35%, #000 0);
+  -webkit-mask-mode: alpha;
+}
+
+[role="progressbar"]::after {
+  font-family: 'Montserrat', sans-serif;
+  counter-reset: percentage var(--value);
+  content: counter(percentage) '%';
+  font-size: calc(var(--size) / 5);
+  color: var(--primary);
+}
+
+
+/* 
+@property --percentage {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+
+.zero-mobile{
+  display: none !important;
+}
+*/
+
+</style>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+
 </head>
 
 <body>
-  <div id="spreadsheet"></div>
 
-    <script>
-      function makeApiCall() {
-        var params = {
-          // The ID of the spreadsheet to retrieve data from.
-          spreadsheetId: '1lmpMg7YRtLIe0k79s0pI0pcWLsq2kWNm5rP4b5Yc9s4',  // TODO: Update placeholder value.
-  
-          // The A1 notation of the values to retrieve.
-          range: 'export',  // TODO: Update placeholder value.
-  
-          // How values should be represented in the output.
-          // The default render option is ValueRenderOption.FORMATTED_VALUE.
-          valueRenderOption: 'FORMATTED_VALUE',  // TODO: Update placeholder value.
-  
-          // How dates, times, and durations should be represented in the output.
-          // This is ignored if value_render_option is
-          // FORMATTED_VALUE.
-          // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-          dateTimeRenderOption: 'SERIAL_NUMBER',  // TODO: Update placeholder value.
-        };
-  
-        var request = gapi.client.sheets.spreadsheets.values.get(params);
-        request.then(function(response) {
-          // TODO: Change code below to process the `response` object:
-          console.log(response.result);
-        }, function(reason) {
-          console.error('error: ' + reason.result.error.message);
-        });
-      }
-  
-      function initClient() {
-        var API_KEY = 'AIzaSyDxlPIPWkDlkzVkyQmWeEZxvP4J2FROvRs'; 
-        var CLIENT_ID = '306806233180-4s8vejs2q744juc1u6cq99sss0f316nn.apps.googleusercontent.com';  
-        // TODO: Authorize using one of the following scopes:
-        //   'https://www.googleapis.com/auth/drive'
-        //   'https://www.googleapis.com/auth/drive.file'
-        //   'https://www.googleapis.com/auth/drive.readonly'
-        //   'https://www.googleapis.com/auth/spreadsheets'
-        //   'https://www.googleapis.com/auth/spreadsheets.readonly'
-        var SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
-  
-        gapi.client.init({
-          'apiKey': API_KEY,
-          'clientId': CLIENT_ID,
-          'scope': SCOPE,
-          'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-        }).then(function() {
-          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-          updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-        });
-      }
-  
-      function handleClientLoad() {
-        gapi.load('client:auth2', initClient);
-      }
-  
-      function updateSignInStatus(isSignedIn) {
-        if (isSignedIn) {
-          makeApiCall();
-        }
-      }
-  
-      function handleSignInClick(event) {
-        gapi.auth2.getAuthInstance().signIn();
-      }
-  
-      function handleSignOutClick(event) {
-        gapi.auth2.getAuthInstance().signOut();
-      }
-      </script>
-      <script async defer src="https://apis.google.com/js/api.js"
-        onload="this.onload=function(){};handleClientLoad()"
-        onreadystatechange="if (this.readyState === 'complete') this.onload()">
-      </script>
-      <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
-      <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
+  <button onclick="location.href='#0'"
+	style="position:fixed;
+    text-align: center;
+    right:20px;
+    bottom:20px;
+    cursor:pointer;
+    width:50px;
+    height:50px;
+    background-color: rgb(233, 212, 141); 
+    color : rgb(89, 82, 54);
+    border: none;
+	outline: none; 
+    border-radius:60px;
+	font-size: 30px;">
+	<span class="material-icons">
+    north
+    </span>
+    </button>
 
+<div style="overflow: hidden; background-color:#bacec2; width: 100%; height:100%; padding:0; margin:0;">  <!-- div couleur-->
+  <br>
+ 
+<div style="overflow: hidden;border: 2px solid rgb(89, 82, 54); border-radius: 10px; width:100% "> <!-- div bordure-->
+<h2 id="0" style="text-align: center; color: rgb(89, 82, 54); margin:0; padding-top:20px; font-weight: bold;">SUIVI DES PFMP</h2>
+<br>
+<div style="background-color: rgb(89, 82, 54); height:10px; width: 30%; margin: auto;">&nbsp;</div>
+<br><br>
+<div style="text-align: center; font-size: small " >Cliquez sur une bulle pour accéder directement à une catégorie</div><br>
+<div class="categorie" style="display:flex; justify-content: center; flex-wrap: wrap; align-items: stretch; ">   <!-- div choix filières-->
+<button style="margin:5px; outline: none; background-color:rgb(209, 147, 111) ; color : white; padding:10px; border-radius: 20px; border:none" onclick="window.location.href='#0'" type="button"> Filières </button> 
+
+<div style=" display:flex; background-color: rgb(233, 212, 141); padding:5px; margin:5px; border-radius: 20px; border:none; align-items: stretch;">
+<button style=" margin:0px; outline: none; background-color: rgb(233, 212, 141); color : rgb(89, 82, 54); padding:5px; border-radius: 20px; border:none" onclick="window.location.href='#0'" type="button">  <span class="material-icons">  precision_manufacturing  </span> </button>
+<a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#1">MNTE</a>
+<a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#2">SN</a>
+<a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#3">MELEC</a>
+<a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#4">MPMIA-MEI</a>
+<a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#5">ELEC</a>
+</div>
+
+<div style="display:flex; background-color: rgb(233, 212, 141); padding:5px; margin:5px; border-radius: 20px; border:none; align-items: stretch;">
+  <button style="margin:0px; outline: none; background-color: rgb(233, 212, 141); color : rgb(89, 82, 54); padding:5px; border-radius: 20px; border:none" onclick="window.location.href='#0'" type="button">  <span class="material-icons">  work  </span> </button>
+  <a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;"  href="#6">GATL</a>
+  <a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#7">LOG</a>
+  <a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#8">AGOTM-GA</a>
+  <a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#10">OOL</a>
+
+  </div>
+
+
+  <div style="display:flex; background-color: rgb(233, 212, 141); padding:5px; margin:5px; border-radius: 20px; border:none; align-items: stretch;">
+    <button style="margin:0px; outline: none; background-color: rgb(233, 212, 141); color : rgb(89, 82, 54); padding:5px; border-radius: 20px; border:none" onclick="window.location.href='#0'" type="button">  <span class="material-icons">  biotech  </span> </button>
+    <a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#11">BioTechnologies</a>
+
+    </div>
+
+    <div style="display:flex; background-color: rgb(233, 212, 141); padding:5px; margin:5px; border-radius: 20px; border:none; align-items: stretch;">
+      <button style="margin:0px; outline: none; background-color: rgb(233, 212, 141); color : rgb(89, 82, 54); padding:5px; border-radius: 20px; border:none" onclick="window.location.href='#0'" type="button">  <span class="material-icons">  next_week </span> </button>
+      <a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="#12"> 3 PM </a>
+  
+      </div>
+
+  </div>
+  <br>
+
+  <div class="categorie" style="display:flex; justify-content: center; flex-wrap: wrap; align-items: stretch; "> 
+
+    <button style="margin:5px; outline: none; background-color:rgb(209, 147, 111) ; color : white; padding:10px; border-radius: 20px; border:none" onclick="window.location.href='#0'" type="button"> Ressources </button> 
+
+    <div style="display:flex; background-color: rgb(233, 212, 141); padding:5px; margin:5px; border-radius: 20px; border:none; align-items: stretch;">
+      <button style="margin:0px; outline: none; background-color: rgb(233, 212, 141); color : rgb(89, 82, 54); padding:5px; border-radius: 20px; border:none" onclick="window.location.href='#0'" type="button">  <span class="material-icons">  folder  </span> </button>
+      <a style=" display:flex; margin-left:2px; margin-right:2px; cursor: pointer; outline: none;   color: rgb(89, 82, 54);   background-color: rgb(254, 246, 219); align-items: center; text-align: center; border-radius: 20px; text-align: center; border:none; padding-left:5px; padding-right:5px; font-size: 0.75rem;" href="workspace/workspace#/folder/de46baf9-b10e-4e90-827e-8d356533a881">Documents PFMP</a>
+  
+      </div>
+  
+</div>
+<br>
+
+<h2 style=" color: rgb(89, 82, 54); text-align: center; margin:15px; padding-top:20px; font-weight: bold;">- SECTEUR INDUSTRIEL - <br> <span class="material-icons">  precision_manufacturing  </span> </h2>
+
+<h3  id="1"  style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">2<sup>ndes</sup> <br> Métiers du Numérique et de la Transition Energétique (MELEC, SN)</h3>
+<div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+<br>
+
+<div class="container">
+   
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/mnte1_1_2021" loading="lazy" class="cards">
+      <div class="card-item">
+          <div class="card-info">
+          <div class="card-title"><b>2 MNTE 1 </b></div>
+          <div style=" display: inline-flex; padding-top: 30px;">    
+          <div id="liaison0" valuemax="100"   valuemin="0"> </div>
+          <div id="convention0" valuemax="100"   valuemin="0"> </div>
+          </div>
+          </div>
+          <div class="card-year">PFMP 1/2 </div>
+          <p id="0jour" class="card-intro">  </p>
+        
+      </div>
+    </a>
+      <!-- FAIT ENT -->
+
+      <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/mnte1_2_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>2 MNTE 1 </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison1" valuemax="100"   valuemin="0"> </div>
+            <div id="convention1" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 2/2 </div>
+            <p id="1jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+ <!-- FAIT ENT -->
+
+ <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/mnte2_1_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 MNTE 2 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison2" valuemax="100"   valuemin="0"> </div>
+        <div id="convention2" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/2 </div>
+        <p id="2jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+  <!-- FAIT ENT -->
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/mnte2_2_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 MNTE 2 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison3" valuemax="100"   valuemin="0"> </div>
+        <div id="convention3" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 2/2 </div>
+        <p id="3jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+  <!-- FAIT ENT -->
+</div>
+
+  <br><br>
+
+<h3 id="2" style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">1<sup>ère</sup> et T<sup>le</sup> <br> Systèmes Numériques</h3>
+<div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+<br>
+
+<div class="container">
+
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/1sn_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>1 SN </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison4" valuemax="100"   valuemin="0"> </div>
+        <div id="convention4" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/1 </div>
+        <p id="4jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+ <!-- FAIT ENT -->
+
+ <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tsn_2021" loading="lazy" class="cards">
+        <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>T SN </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison5" valuemax="100"   valuemin="0"> </div>
+        <div id="convention5" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/1 </div>
+        <p id="5jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+ <!-- FAIT ENT -->
+
+</div> <!-- div du container-->
+<br><br>
+
+<h3 id="3" style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">1<sup>ère</sup> et T<sup>le</sup> <br> Métiers de l'ÉLectricité et de ses Environnements Connectés</h3>
+<div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+<br>
+
+<div class="container">
+<a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/1melec_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>1 MELEC </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison6" valuemax="100"   valuemin="0"> </div>
+        <div id="convention6" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/1 </div>
+        <p id="6jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+ <!-- FAIT ENT -->
+ <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tmelec_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>T MELEC </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison7" valuemax="100"   valuemin="0"> </div>
+        <div id="convention7" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/1 </div>
+        <p id="7jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+    </div> <!-- div du container-->
+    <br><br>
+
+    
+  <h3 id="4" style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">2<sup>nde</sup> Métiers du Pilotage de de la Maintenance d’Installations Automatisées <br> 1<sup>ère</sup> et T<sup>le</sup> Maintenance des Équipements Industriels</h3>
+  <div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+  <br>
+
+  <div class="container">
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2mpmia_1_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>2 MPMIA </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison8" valuemax="100"   valuemin="0"> </div>
+            <div id="convention8" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/2 </div>
+            <p id="8jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2mpmia_2_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>2 MPMIA </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison9" valuemax="100"   valuemin="0"> </div>
+            <div id="convention9" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 2/2 </div>
+            <p id="9jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/1mei_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>1 MEI </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison10" valuemax="100"   valuemin="0"> </div>
+            <div id="convention10" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/1 </div>
+            <p id="10jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tmei_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>T MEI </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison11" valuemax="100"   valuemin="0"> </div>
+            <div id="convention11" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/1 </div>
+            <p id="11jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+  </div> <!-- div du container-->
+
+
+  <br><br>
+  <h3 id="5" style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">CAP Électricien <br> 2 ELEC et T ELEC </h3>
+  <div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+  <br>
+
+  <div class="container">
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2elec_1_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>2 ELEC </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison12" valuemax="100"   valuemin="0"> </div>
+            <div id="convention12" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/2 </div>
+            <p id="12jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2elec_2_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>2 ELEC </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison13" valuemax="100"   valuemin="0"> </div>
+            <div id="convention13" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 2/2 </div>
+            <p id="13jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/telec_1_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>T ELEC </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison14" valuemax="100"   valuemin="0"> </div>
+            <div id="convention14" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/2 </div>
+            <p id="14jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/telec_2_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>T ELEC </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison15" valuemax="100"   valuemin="0"> </div>
+            <div id="convention15" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 2/2 </div>
+            <p id="15jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+  </div><!-- div du container-->
+
+  <br><br>
+
+  <h2 style=" color: rgb(89, 82, 54); text-align: center; margin:15px; padding-top:20px; font-weight: bold;">- SECTEUR TERTIAIRE - <br> <span class="material-icons">  work  </span> </h2>
+
+
+<h3  id="6"  style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">2<sup>ndes</sup> Gestion Administrative, du Transport et de la Logistique <br> </h3>
+<div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+<br>
+
+<div class="container">
+   
+
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2gatl1_1_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 GATL 1 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison16" valuemax="100"   valuemin="0"> </div>
+        <div id="convention16" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/2 </div>
+        <p id="16jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+
+  
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2gatl1_2_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 GATL 1 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison17" valuemax="100"   valuemin="0"> </div>
+        <div id="convention17" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 2/2 </div>
+        <p id="17jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+
+
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2gatl2_1_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 GATL 2 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison18" valuemax="100"   valuemin="0"> </div>
+        <div id="convention18" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/2 </div>
+        <p id="18jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2gatl2_2_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 GATL 2 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison19" valuemax="100"   valuemin="0"> </div>
+        <div id="convention19" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 2/2 </div>
+        <p id="19jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+
+  </div> <!-- div du container-->
+  <br><br>
+ 
+  <h3 id="7" style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">1<sup>ère</sup> et T<sup>le</sup> <br> Logistique</h3>
+  <div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+  <br>
+
+  <div class="container">
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/1log_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>1 LOG </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison20" valuemax="100"   valuemin="0"> </div>
+            <div id="convention20" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/1 </div>
+            <p id="20jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+   
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tlog_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>T LOG </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison21" valuemax="100"   valuemin="0"> </div>
+            <div id="convention21" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/1 </div>
+            <p id="21jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+  
+  </div> <!-- div du container-->
+  <br><br>
+ 
+  <h3 id="8" style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">1<sup>ère</sup> et T<sup>le</sup> <br> Assistance à la Gestion des Organisations et de leurs Activités / Organisation de transport de marchandises / Gestion Administration</h3>
+  <div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+  <br>
+
+  <div class="container">
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/1agotm_1_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>1 AGOTM </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison22" valuemax="100"   valuemin="0"> </div>
+            <div id="convention22" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/2 </div>
+            <p id="22jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/1agotm_2_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>1 AGOTM </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison23" valuemax="100"   valuemin="0"> </div>
+            <div id="convention23" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 2/2 </div>
+            <p id="23jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tga_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>T GA </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison24" valuemax="100"   valuemin="0"> </div>
+            <div id="convention24" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/1 </div>
+            <p id="24jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+  </div> <!-- div du container-->
+
+  <br><br>
+ 
+  <h3 id="10" style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">2<sup>nde</sup> et T<sup>le</sup> <br>Opérateur, Opératrice Logistique</h3>
+  <div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+  <br>
+
+  <div class="container">
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2ool_1_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>2 OOL </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison25" valuemax="100"   valuemin="0"> </div>
+            <div id="convention25" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/2 </div>
+            <p id="25jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2ool_2_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>2 OOL </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison26" valuemax="100"   valuemin="0"> </div>
+            <div id="convention26" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 2/2 </div>
+            <p id="26jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tool_1_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>T OOL </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison27" valuemax="100"   valuemin="0"> </div>
+            <div id="convention27" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/2 </div>
+            <p id="27jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2ool_2_2021-1" loading="lazy" class="cards">
+       <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>T OOL </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison28" valuemax="100"   valuemin="0"> </div>
+            <div id="convention28" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 2/2 </div>
+            <p id="28jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+  
+  </div> <!-- div du container-->
+
+<br><br>
+
+ 
+<h2 style=" color: rgb(89, 82, 54); text-align: center; margin:15px; padding-top:20px; font-weight: bold;">- SECTEUR BIOTECHNOLOGIES, SANTÉ-ENVIRONNEMENT - <br> <span class="material-icons">  biotech </span> </h2>
+
+<h3  id="11"  style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">CAP SLAH, ATMFC et PSR <br> </h3>
+<div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+<br>
+
+<div class="container">
+   
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2slah1_1_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 SLAH 1 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison29" valuemax="100"   valuemin="0"> </div>
+        <div id="convention29" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/2 </div>
+        <p id="29jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+  
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2slah1_2_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 SLAH 1 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison30" valuemax="100"   valuemin="0"> </div>
+        <div id="convention30" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 2/2 </div>
+        <p id="30jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2slah2_1_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 SLAH 2 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison31" valuemax="100"   valuemin="0"> </div>
+        <div id="convention31" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/2 </div>
+        <p id="31jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+  
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/2slah2_2_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>2 SLAH 2 </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison32" valuemax="100"   valuemin="0"> </div>
+        <div id="convention32" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 2/2 </div>
+        <p id="32jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+  
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tatmfc_1_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>T ATMFC </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison33" valuemax="100"   valuemin="0"> </div>
+        <div id="convention33" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/2 </div>
+        <p id="33jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+  
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tatmfc_2_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>T ATMFC </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison34" valuemax="100"   valuemin="0"> </div>
+        <div id="convention34" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 2/2 </div>
+        <p id="34jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tpsr_1_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>T PSR </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison35" valuemax="100"   valuemin="0"> </div>
+        <div id="convention35" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 1/2 </div>
+        <p id="35jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+
+  <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/tpsr_2_2021" loading="lazy" class="cards">
+    <div class="card-item">
+        <div class="card-info">
+        <div class="card-title"><b>T PSR </b></div>
+        <div style=" display: inline-flex; padding-top: 30px;">    
+        <div id="liaison36" valuemax="100"   valuemin="0"> </div>
+        <div id="convention36" valuemax="100"   valuemin="0"> </div>
+        </div>
+        </div>
+        <div class="card-year">PFMP 2/2 </div>
+        <p id="36jour" class="card-intro">  </p>
+      
+    </div>
+  </a>
+<!-- FAIT ENT -->
+  
+
+  </div> <!-- div du container-->
+  <br><br>
+  <h2 style=" color: rgb(89, 82, 54); text-align: center; margin:15px; padding-top:20px; font-weight: bold;">- 3 Prépa-Métiers - <br> <span class="material-icons">  next_week </span> </h2>
+
+  <h3  id="12"  style=" color: rgb(89, 82, 54); text-align: center; margin:15px; ">Classe de 3 PM <br> </h3>
+  <div style="background-color: rgb(89, 82, 54); height:5px; width: 30%; margin: auto;">&nbsp;</div>
+  <br>
+  
+  <div class="container">
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/3_pm_2021" loading="lazy" class="cards">
+        <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>3 PM </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison37" valuemax="100"   valuemin="0"> </div>
+            <div id="convention37" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 1/2 </div>
+            <p id="37jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+    <a href="https://ent.iledefrance.fr/pages#/website/b68b5f0d-99fe-4df2-9ee1-d3af994e83d4/3_pm_2021" loading="lazy" class="cards">
+     <div class="card-item">
+            <div class="card-info">
+            <div class="card-title"><b>3 PM </b></div>
+            <div style=" display: inline-flex; padding-top: 30px;">    
+            <div id="liaison38" valuemax="100"   valuemin="0"> </div>
+            <div id="convention38" valuemax="100"   valuemin="0"> </div>
+            </div>
+            </div>
+            <div class="card-year">PFMP 2/2 </div>
+            <p id="38jour" class="card-intro">  </p>
+          
+        </div>
+      </a>
+    <!-- FAIT ENT -->
+
+  </div> <!-- div du container-->
+  
+
+
+  <br><br>
+  <br><br>
+
+  <h2 style=" color: rgb(89, 82, 54); text-align: center; margin:15px; padding-top:20px; font-weight: bold;">- Tableau Récapitulatif - <br> <span class="material-icons">  table_chart </span> </h2>
+
+<div style="margin:0;" id="app">
+<section v-if="liste">  
+                    <table>
+                        <thead>
+                            <tr>
+                              <th>Classe</th>
+                              <th>Période</th>
+                              <th>Départ</th>
+                              <th>Liaison</th>
+                              <th>Convention</th>
+                            </tr>
+                          </thead>
+
+                        <tbody v-for="item in liste">
+                            <tr> 
+                            <td> <span>{{item.classe}}</span></td>
+                            <td><span>{{item.periode}}</span></td>
+                            <td><span>J {{item.depart}}</span></td>
+                            <td><span>{{item.liaison}} %</span></td>
+                            <td><span>{{item.convention}} %</span></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+        </section>
+
+    </div>
+
+  <br><br> 
+
+</div> <!-- div bordure-->
+</div>  <!-- div couleur-->
 
 
 </body>
 
 
 <script>
-  var data = [
-    ['2MPMIA', '30', '20'],
-    ['2SLAH1', '100', '90'],
-];
 
-jspreadsheet(document.getElementById('spreadsheet'), {
-    data:data,
-    columns: [
-        { type: 'text', title:'Classe', width:120 },
-        { type: 'text', title:'Fiche de liaison', width:200, },
-        { type: 'text', title:'Convention', width:200 }
-     ]
+var app = new Vue({
+    el: '#app',
+    mounted() {
+        let vm = this
+        axios
+            .get('https://sheets.googleapis.com/v4/spreadsheets/1lmpMg7YRtLIe0k79s0pI0pcWLsq2kWNm5rP4b5Yc9s4/values/export!A2:E40?key=AIzaSyDxlPIPWkDlkzVkyQmWeEZxvP4J2FROvRs'
+            )
+            .then(function (response) {
+                let pfmp = response.data.values   
+                for (let index = 0; index < pfmp.length; index++) {
+                    const element = pfmp[index];
+                    let mitem = {
+                        classe : element[0],
+                        periode : element[1],
+                        depart: element[2],
+                        liaison : element[3],
+                        convention : element[4]
+                    }
+                        vm.liste = vm.liste.concat(mitem)
+                    }
+                                
+        
+            
+                                                             
+            for (let i=0; i<40; i++){
+
+            document.getElementById("liaison"+i).setAttribute("role", "progressbar");
+            document.getElementById("liaison"+i).setAttribute("valuenow", vm.liste[i].liaison );
+            document.getElementById("liaison"+i).setAttribute("style", "--value:" + vm.liste[i].liaison);
+
+            document.getElementById("convention"+i).setAttribute("role", "progressbar");
+            document.getElementById("convention"+i).setAttribute("valuenow", vm.liste[i].convention);
+            document.getElementById("convention"+i).setAttribute("style", "--value:" + vm.liste[i].convention);
+
+            document.getElementById(i+"jour").innerHTML = "J " + vm.liste[i].depart;
+
+           }
+           })
+    },
+    data: {
+        liste: [],
+    },
+    computed: {},
 });
 
-//var spreadsheet_id = '1lmpMg7YRtLIe0k79s0pI0pcWLsq2kWNm5rP4b5Yc9s4';
-//var api_key = 'AIzaSyDxlPIPWkDlkzVkyQmWeEZxvP4J2FROvRs';
-//var id_client = '306806233180-4s8vejs2q744juc1u6cq99sss0f316nn.apps.googleusercontent.com' ;
-//var secret = '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';
-
 </script>
+
 </html>
-
-
-
-
