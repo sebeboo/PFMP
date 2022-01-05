@@ -19,8 +19,7 @@
                             vm.liste = vm.liste.concat(mitem)
                         }
                                     
-            
-                document.addEventListener("DOMContentLoaded", function() {
+           
                                                                  
                 for (let i=0; i<40; i++){
     
@@ -35,7 +34,7 @@
                 document.getElementById(i+"jour").innerHTML = "J " + vm.liste[i].depart;
     
                }
-                                              }); 
+                               
                })
         },
         data: {
