@@ -24,11 +24,11 @@
                                                                  
                 for (let i=0; i<40; i++){
     
-                document.getElementById("liaison"+i).setAttribute("role", progressbar);
+                document.getElementById("liaison"+i).setAttribute("role", "progressbar");
                 document.getElementById("liaison"+i).setAttribute("valuenow", vm.liste[i].liaison );
                 document.getElementById("liaison"+i).setAttribute("style", "--value:" + vm.liste[i].liaison);
     
-                document.getElementById("convention"+i).setAttribute("role", progressbar);
+                document.getElementById("convention"+i).setAttribute("role", "progressbar");
                 document.getElementById("convention"+i).setAttribute("valuenow", vm.liste[i].convention);
                 document.getElementById("convention"+i).setAttribute("style", "--value:" + vm.liste[i].convention);
     
